@@ -1,4 +1,4 @@
-# STATS220 Assignment 1
+# STATS 220 Assignment 1
 
 ## About
 
