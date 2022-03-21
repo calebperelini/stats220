@@ -42,6 +42,38 @@ doge_1 <- image_read(img1_url) %>%
                    gravity = "west")
 ```
 
+The images were scaled down to a ratio of 300 pixels using `image_scale()`, and then overlain with meme text using `image_annotate`.
+
+This was repeated for each image in order to standardize and create each meme.
+
+For example, the following image was saved and scaled like so:
+
+![Initial Image](https://github.com/calebperelini/stats220/blob/main/doge.jpeg)
+
+Then modified using `image_annotate()`
+
+![After modification.](https://github.com/calebperelini/stats220/blob/main/Screen%20Shot%202022-03-21%20at%206.42.18%20PM.png)
+
+**Some detail was lost** due to the image scaling, though the text remains legible.
+
+### Appending and output
+
+Finally, the modified meme images were sorted into two rows, with two vectors containg the two rows of images. 
+
+`image_append()` was then used to stitch and append the two rows together, creating a final image, which was then saved as a `.png` using `image_write()`
+
+```r
+top_row <- image_append(c(doge_1, doge_2))
+bottom_row <- image_append(c(doge_3, doge_4))
+
+final_meme <- c(top_row, bottom_row) %>%
+  image_append(stack = TRUE) %>%
+  image_scale(500)
+
+image_write(final_meme, "doge_stats.png")
+```
+
+
 
 
 
